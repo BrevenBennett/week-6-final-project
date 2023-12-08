@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="movie.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/a78d91bcb9.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="landing">
+      <nav>
+        <a href="#" class="logo__wrapper">
+          <figure class="logo__img--wrapper">
+            <i class="fa-solid fa-film"></i>
+          </figure>
+          <h2 class="logo__text">Movie Madness</h2>
+        </a>
+        <ul class="nav__link--list">
+          <li class="nav__link">
+            <a href="#" class="nav__link--anchor">Home</a>
+          </li>
+          <li class="nav__link">
+            <a href="./movie.html" class="nav__link--anchor">Find Your Movie</a>
+          </li>
+          <li class="nav__link">
+            <a
+              href="#"
+              class="nav__link--anchor nav__link--anchor-primary no-cursor"
+              >Sign In</a
+            >
+          </li>
+        </ul>
+        <button class="btn__menu" onclick="openMenu()">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="menu__backdrop">
+          <button class="btn__menu btn__menu--close" onclick="closeMenu()">
+            <i class="fas fa-times"></i>
+          </button>
+          <ul class="menu__links">
+            <li class="menu__list">
+              <a
+                href="#"
+                class="menu__link link__hover-effect"
+                onclick="closeMenu()"
+                >Home</a
+              >
+            </li>
+            <li class="menu__list">
+              <a
+                href="movie.html"
+                class="menu__link link__hover-effect"
+                onclick="closeMenu()"
+                >Find Your Movie</a
+              >
+            </li>
+            <li class="menu__list menu__list--primary">
+              <a class="menu__link nav__link--primary" onclick="closeMenu()"
+                >Sign In</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <header>
+        <div class="header__description">
+          <h1 class="header__title">The Best Movie Platorm in the U.S.</h1>
+          <h3 class="header__subtitle">
+            GRAB YOUR POPCORN AND
+            <div class="header__subtitle--anchor">
+              <a href="movie.html" class="red">FIND YOUR FAVORITE FLICK</a>
+            </div>
+          </h3>
+        </div>
+        <figure class="header__img--wrapper">
+          <img class="header__img" src="assets/movie.svg" alt="" />
+        </figure>
+      </header>
+    </div>
+  </body>
+</html>
