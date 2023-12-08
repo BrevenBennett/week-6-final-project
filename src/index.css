@@ -54,6 +54,11 @@
     opacity: 0;
     visibility: hidden;
   }
+
+  .menu--open {
+    max-height: 100vh;
+    overflow-y: hidden;
+  }
   
   .menu--open .menu__backdrop {
     visibility: visible;
@@ -79,10 +84,7 @@
     }
   }
   
-  .menu--open {
-    max-height: 100vh;
-    overflow-y: hidden;
-  }
+  
   
   .menu__links {
     display: flex;

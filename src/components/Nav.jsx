@@ -1,63 +1,72 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Nav = () => {
+  function openMenu() {
+    document.body.classList += " menu--open";
+  }
+
+  function closeMenu() {
+    document.body.classList.remove("menu--open");
+  }
+
   return (
     <nav>
-      <Link to="/" class="logo__wrapper">
-        <figure class="logo__img--wrapper">
-          <i class="fa-solid fa-film"></i>
+      <Link to="/" className="logo__wrapper">
+        <figure className="logo__img--wrapper">
+          <FontAwesomeIcon icon="film" />
         </figure>
-        <h2 class="logo__text">Movie Madness</h2>
+        <h2 className="logo__text">Movie Madness</h2>
       </Link>
-      <ul class="nav__link--list">
-        <li class="nav__link">
-          <Link to="/" class="nav__link--anchor">
+      <ul className="nav__link--list">
+        <li className="nav__link">
+          <Link to="/" className="nav__link--anchor">
             Home
           </Link>
         </li>
-        <li class="nav__link">
-          <Link to="/movies" class="nav__link--anchor">
+        <li className="nav__link">
+          <Link to="/movies" className="nav__link--anchor">
             Find Your Movie
           </Link>
         </li>
-        <li class="nav__link">
+        <li className="nav__link">
           <Link
             to="/"
-            class="nav__link--anchor nav__link--anchor-primary no-cursor"
+            className="nav__link--anchor nav__link--anchor-primary no-cursor"
           >
             Sign In
           </Link>
         </li>
       </ul>
-      <button class="btn__menu" onclick="openMenu()">
-        <i class="fas fa-bars"></i>
+      <button className="btn__menu" onClick={openMenu}>
+        <FontAwesomeIcon icon="bars" />
       </button>
-      <div class="menu__backdrop">
-        <button class="btn__menu btn__menu--close" onclick="closeMenu()">
-          <i class="fas fa-times"></i>
+      <div className="menu__backdrop">
+        <button className="btn__menu btn__menu--close" onClick={closeMenu}>
+          <FontAwesomeIcon icon="times" />
         </button>
-        <ul class="menu__links">
-          <li class="menu__list">
+        <ul className="menu__links">
+          <li className="menu__list">
             <Link
               to="/"
-              class="menu__link link__hover-effect"
-              onclick="closeMenu()"
+              className="menu__link link__hover-effect"
+              onClick={closeMenu}
             >
               Home
             </Link>
           </li>
-          <li class="menu__list">
+          <li className="menu__list">
             <Link
               to="/movies"
-              class="menu__link link__hover-effect"
-              onclick="closeMenu()"
+              className="menu__link link__hover-effect"
+              onClick={closeMenu}
             >
               Find Your Movie
             </Link>
           </li>
-          <li class="menu__list menu__list--primary">
-            <Link class="menu__link nav__link--primary" onclick="closeMenu()">
+          <li className="menu__list menu__list--primary">
+            <Link className="menu__link nav__link--primary" onClick={closeMenu}>
               Sign In
             </Link>
           </li>
