@@ -6,9 +6,8 @@ import Movie from "../components/ui/Movie";
 
 const Movies = () => {
   const { title } = useParams();
-  console.log(title)
   const [movies, setMovies] = useState([]);
-  // const [loading, setLoading] = useState();
+  const [loading, setLoading] = useState();
   const [searchTitle, setSearchTitle] = useState(title);
 
   function onSearch() {
@@ -16,13 +15,13 @@ const Movies = () => {
   }
 
   async function fetchMovies(searchedTitle) {
-    // setLoading(true);
+    setLoading(true);
     const { data } = await axios.get(
       `https://www.omdbapi.com/?apikey=53de5b3d&s=${searchedTitle || title}`
     );
     setMovies(data);
     console.log(data);
-    // setLoading(false);
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -97,7 +96,11 @@ const Movies = () => {
           </div>
         </div>
         <div className="movie-list">
-          {/* {movies.map((movie) => (<Movie movie={movie} />).slice(0, 6))} */}
+          {loading ? (
+            <div> Loading... </div>
+          ) : (
+            movies.map((movie) => (<Movie movie={movie} />))
+          )}
         </div>
         <div className="movie__loading">
           <FontAwesomeIcon icon="spinner" />
