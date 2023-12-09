@@ -26,7 +26,7 @@ const Nav = () => {
           </Link>
         </li>
         <li className="nav__link">
-          <Link to="/movies" className="nav__link--anchor">
+          <Link to="/:title" className="nav__link--anchor">
             Find Your Movie
           </Link>
         </li>
@@ -58,7 +58,7 @@ const Nav = () => {
           </li>
           <li className="menu__list">
             <Link
-              to="/movies"
+              to="/:title"
               className="menu__link link__hover-effect"
               onClick={closeMenu}
             >
