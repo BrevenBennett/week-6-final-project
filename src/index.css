@@ -344,11 +344,6 @@ input:focus {
   animation: rotate 600ms infinite linear;
   color: red;
   font-size: 120px;
-  visibility: hidden;
-}
-
-.spinner--visible {
-  visibility: visible;
 }
 
 @keyframes rotate {

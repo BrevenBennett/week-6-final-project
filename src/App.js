@@ -13,7 +13,7 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/" exact element={<Home />} />
-          <Route path="/:title" element={<Movies />} />
+          <Route path="/movies" element={<Movies />} />
           {/* <Route path="/movies/:id" element={<MovieInfo movies={movies} />} /> */}
         </Routes>
       </div>

@@ -10,10 +10,10 @@ const MovieInfo = ({ movies }) => {
     <div className="movies__container">
       <div className="row">
         <div className="movie__selected--top">
-          <Link to="/:title" className="movies__link">
+          <Link to="/movies" className="movies__link">
             <FontAwesomeIcon icon="arrow-left" />
           </Link>
-          <Link to="/:title" className="movie__link">
+          <Link to="/movies" className="movie__link">
             <h2 className="movie__selected--title--top">Movies</h2>
           </Link>
         </div>

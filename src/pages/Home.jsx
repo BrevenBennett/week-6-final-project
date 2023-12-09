@@ -11,7 +11,7 @@ const Home = () => {
           <h3 className="header__subtitle">
             GRAB YOUR POPCORN AND
             <div className="header__subtitle--anchor">
-              <Link to="/:title" className="red">
+              <Link to="/movies" className="red">
                 FIND YOUR FAVORITE FLICK
               </Link>
             </div>

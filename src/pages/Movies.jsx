@@ -5,73 +5,66 @@ import { useParams } from "react-router-dom";
 import Movie from "../components/ui/Movie";
 
 const Movies = () => {
-  const { title } = useParams();
+  const [search, setSearch] = useState("");
   const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState();
-  const [searchTitle, setSearchTitle] = useState(title);
-
-  function onSearch() {
-    fetchMovies(searchTitle);
-  }
-
-  async function fetchMovies(searchedTitle) {
-    setLoading(true);
-    const { data } = await axios.get(
-      `https://www.omdbapi.com/?apikey=53de5b3d&s=${searchedTitle || title}`
-    );
-    setMovies(data);
-    console.log(data);
-    setLoading(false);
-  }
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetchMovies();
-  }, []);
+    async function fetchMovies() {
+      try {
+        setLoading(true);
 
-  // function filterMovies(filter) {
-  //   console.log(filter);
-  //   if (filter === "Oldest_To_Newest") {
-  //     setMovies(
-  //       movies
-  //         .slice(0, 6)
-  //         .sort(
-  //           (a, b) =>
-  //             (a.salePrice || a.originalPrice) -
-  //             (b.salePrice || b.originalPrice)
-  //         )
-  //     );
-  //   }
-  //   if (filter === "Newest_To_Oldest") {
-  //     setMovies(
-  //       movies
-  //         .slice(0, 6)
-  //         .sort(
-  //           (a, b) =>
-  //             (b.salePrice || b.originalPrice) -
-  //             (a.salePrice || a.originalPrice)
-  //         )
-  //     );
-  //   }
-  // }
+        const apiKey = "867f9b9b";
+        const apiUrl = `http://www.omdbapi.com/?apikey=${apiKey}&s=${search}`;
+
+        const { data } = await axios.get(apiUrl);
+        if (data && data.Search) {
+          setMovies(data.Search);
+        }
+      } catch (error) {
+        console.error("Couldn't find what you're looking for:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    if (search) {
+      fetchMovies();
+    }
+  }, [search]);
+
+  function handleChange(e) {
+    setSearch(e.target.value);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+
+  function filterMovies(filter) {
+    console.log(filter);
+    if (filter === "Oldest_To_Newest") {
+      setMovies(movies.slice(0, 6).sort((a, b) => a.Year - b.Year));
+    }
+    if (filter === "Newest_To_Oldest") {
+      setMovies(movies.slice(0, 6).sort((a, b) => b.Year - a.Year));
+    }
+  }
 
   return (
     <>
       <div className="nav__movie--secondary">
         <h1 className="nav__title">Browse Our Movies</h1>
-        <form
-          action=""
-          id="form"
-          value={searchTitle}
-          onSubmit={(e) => onSearch(e.target.value)}
-        >
+        <form action="" id="form" value={search} onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Find your movie"
             id="search"
-            onChange={(e) => setSearchTitle(e.target.value)}
+            value={search}
+            onChange={handleChange}
           />
           <div className="header__btn--wrapper">
-            <button className="header__btn" onClick={() => onSearch}>
+            <button className="header__btn" type="submit">
               <FontAwesomeIcon icon="magnifying-glass" />
             </button>
           </div>
@@ -85,7 +78,7 @@ const Movies = () => {
             <select
               id="filter"
               defaultValue="DEFAULT"
-              // onChange={(e) => filterMovies(e.target.value)}
+              onChange={(e) => filterMovies(e.target.value)}
             >
               <option value="DEFAULT" disabled>
                 Filter
@@ -97,13 +90,12 @@ const Movies = () => {
         </div>
         <div className="movie-list">
           {loading ? (
-            <div> Loading... </div>
+            <div className="movie__loading">
+              <FontAwesomeIcon icon="spinner" />
+            </div>
           ) : (
-            movies.map((movie) => (<Movie movie={movie} />))
+            movies.map((movie) => <Movie movie={movie} key={movie.imdbID} />)
           )}
-        </div>
-        <div className="movie__loading">
-          <FontAwesomeIcon icon="spinner" />
         </div>
       </header>
     </>
