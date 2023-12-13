@@ -20,11 +20,15 @@ button {
   cursor: pointer;
 }
 
+.container {
+  padding: 48px 0;
+}
+
 .row {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 36px;
 }
 
 .no-cursor {
@@ -257,6 +261,35 @@ input:focus {
   max-width: 500px;
 }
 
+/* 
+
+FOOTER
+
+*/
+
+footer {
+  background-color: #242424;
+}
+
+.row__column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer__list {
+  margin: 24px 0;
+}
+
+.footer__link {
+  padding: 0 8px;
+}
+
+.footer__link,
+.footer__copyright {
+  color: #fff;
+}
+
 /***
   
   /movies
@@ -264,7 +297,7 @@ input:focus {
 ***/
 
 .nav__movie--secondary {
-  padding: 24px 0;
+  padding-bottom: 24px;
   width: 100%;
   background-color: #242424;
   display: flex;
@@ -300,6 +333,8 @@ input:focus {
 #filter {
   margin-left: 6px;
   border-radius: 5px;
+  padding: 2px;
+  border: none;
 }
 
 .movies__placeholder {
@@ -338,7 +373,7 @@ input:focus {
 
 .movie__img {
   width: 100%;
-  height: stretch;
+  height: 350px;
   cursor: pointer;
   border-radius: 10px;
 }
@@ -381,6 +416,56 @@ input:focus {
     
 */
 
+.movies__container {
+  padding: 24px 0;
+  background-color: red;
+  height: 100vh;
+}
+
+.movie__clicked--links {
+  display: flex;
+  align-items: center;
+}
+
+.movie__link {
+  color: black;
+}
+
+.movie__clicked--title {
+  margin-left: 12px;
+}
+
+.movie__clicked {
+  width: 100%;
+  margin-top: 72px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.movie__clicked--description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45%;
+}
+
+.movie__clicked--img {
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.movie__clicked--info {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.movie__clicked--detail {
+  margin-bottom: 24px;
+  width: 100%;
+  max-width: 500px;
+}
 
 
 @media (max-width: 768px) {

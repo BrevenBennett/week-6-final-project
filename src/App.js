@@ -3,6 +3,7 @@ import Movies from "./pages/Movies";
 import Home from "./pages/Home";
 import Nav from "./components/Nav";
 import MovieData from "./pages/MovieData";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -12,8 +13,9 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/movies" element={<Movies />} />
-          <Route path="/movies/:imbdID" element={<MovieData />} />
+          <Route path="/movies/:imdbID" element={<MovieData />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );

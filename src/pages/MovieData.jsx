@@ -1,47 +1,84 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import MoviePlaceHolder from "../assets/movie_placeholder.jpg"
 
 const MovieData = () => {
   // use this url to build ui first: https://www.omdbapi.com/?i=tt1905041&apikey=867f9b9b
-  // const { imbdID } = useParams();
-  // const [loading, setLoading] = useState(true);
+  const { imdbID } = useParams();
+  console.log(imdbID);
+  const [movieData, setMovieData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // async function fetchMovieData(imbdID) {
-  //   const apiKey = "867f9b9b";
+  async function fetchMovieData() {
+    const apiKey = "867f9b9b";
 
-  //   const { data } = await axios.get(`https://www.omdbapi.com/?i=${imbdID}&apikey=${apiKey}`)
-  //   setMovie(data);
-  //   setLoading(false);
-  // }
+    const { data } = await axios.get(
+      `https://www.omdbapi.com/?i=${imdbID}&apikey=${apiKey}`
+    );
+    setMovieData(data);
+    setLoading(false);
+  }
 
-  // useEffect(() => {
-  //   if (imbdID) {
-  //     fetchMovieData(imdbID);
-  //   }
-  // }, [imbdID])
+  useEffect(() => {
+    fetchMovieData();
+  }, [imdbID]);
 
   return (
     <div className="movies__container">
       <div className="row">
         <div className="movie__clicked--links">
-          <Link to="/movies" className="movies__link">
+          <Link to="/movies" className="movie__link">
             <FontAwesomeIcon icon="arrow-left" />
           </Link>
           <Link to="/movies" className="movie__link">
             <h2 className="movie__clicked--title">Movies</h2>
           </Link>
         </div>
-        <div className="book__clicked">
-          <figure className="book__clicked--wrapper">
-            <img src={MoviePlaceHolder} alt="" className="book__clicked--img" />
-          </figure>
-          <div className="book__clicked--description">
-            <h2 className="book__clicked--title">movie.title</h2>
-            
-          </div>
+        <div className="movie__clicked">
+          {loading ? (
+            new Array(1).fill(0).map((_, index) => (
+              <div className="skeleton__info--wrapper" key={index}>
+                <div className="movie__poster--skeleton"></div>
+                <div className="movie__info-skeleton--wrapper">
+                  <div className="movie__info-title--skeleton"></div>
+                  <div className="movie__info-title--skeleton"></div>
+                  <div className="movie__info-title--skeleton"></div>
+                </div>
+              </div>
+            ))
+          ) : (
+            <>
+              <div className="movie__clicked--description">
+                <figure className="movie__clicked--figure">
+                  <img
+                    src={movieData.Poster}
+                    alt=""
+                    className="movie__clicked--img"
+                  />
+                </figure>
+              </div>
+              <div className="movie__clicked--info">
+                <h1 className="movie__clicked--title">{movieData.title}</h1>
+                <div className="movie__clicked--detail">
+                  <h2>Initial Release:</h2> 
+                  <h4>{movieData.Released}</h4>
+                </div>
+                <div className="movie__clicked--detail">
+                  <h2>Director:</h2> 
+                  <h4>{movieData.Director}</h4>
+                </div>
+                <div className="movie__clicked--detail">
+                  <h2>Box Office:</h2> 
+                  <h4>{movieData.BoxOffice}</h4>
+                </div>
+                <div className="movie__clicked--detail">
+                  <h2>Synopsis:</h2>
+                  <h4>{movieData.Plot}</h4>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>

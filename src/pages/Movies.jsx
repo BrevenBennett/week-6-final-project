@@ -23,7 +23,6 @@ const Movies = () => {
       const { data } = await axios.get(apiUrl);
       if (data && data.Search) {
         setMovies(data.Search);
-        console.log(data.Search)
       }
     } catch (error) {
       console.error("Couldn't find what you're looking for:", error);
