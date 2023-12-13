@@ -20,6 +20,13 @@ button {
   cursor: pointer;
 }
 
+.row {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
 .no-cursor {
   cursor: no-drop;
 }
@@ -170,7 +177,7 @@ nav {
 header {
   margin: 0 auto;
   padding: 0 24px;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 96px);
 }
 
 .header__description {
@@ -252,9 +259,9 @@ input:focus {
 
 /***
   
-  MOVIE.HTML
+  /movies
   
-  ***/
+***/
 
 .nav__movie--secondary {
   padding: 24px 0;
@@ -274,6 +281,8 @@ input:focus {
 .header {
   padding: 24px;
   position: relative;
+  height: calc(100vh + 140px);
+  background-color: red;
 }
 
 .header__movie {
@@ -291,6 +300,15 @@ input:focus {
 #filter {
   margin-left: 6px;
   border-radius: 5px;
+}
+
+.movies__placeholder {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 30%;
+  left: 50%;
+  font-size: 40px;
+  text-align: center;
 }
 
 .movie-list {
@@ -321,7 +339,8 @@ input:focus {
 .movie__img {
   width: 100%;
   height: stretch;
-  cursor: no-drop;
+  cursor: pointer;
+  border-radius: 10px;
 }
 
 .movie:hover {
@@ -334,7 +353,7 @@ input:focus {
 }
 
 .movie__loading {
-  top: 50%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   position: absolute;
@@ -342,7 +361,7 @@ input:focus {
 
 .fa-spinner {
   animation: rotate 600ms infinite linear;
-  color: red;
+  color: black;
   font-size: 120px;
 }
 
@@ -358,77 +377,10 @@ input:focus {
 
 /* 
 
-  movie/:id
+  movie/:imdbID
     
 */
 
-.container__movie--selected {
-  padding-top: 16px;
-}
-
-.movie__selected {
-  display: flex;
-}
-
-.movie__selected--figure {
-  width: 40%;
-  padding: 16px 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.movie__selected--img {
-  max-height: 500px;
-  width: auto;
-  max-width: 100%;
-}
-
-.movie__selected--description {
-  width: 60%;
-  padding: 16px 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.movie__selected--top {
-  padding: 0 24px;
-  margin-bottom: 8px;
-  font-size: 32px;
-  color: #242424;
-  display: flex;
-  align-items: center;
-}
-
-.movie__selected--link {
-  color: #242424;
-}
-
-.fa-arrow-left {
-  font-size: 30px;
-}
-
-.movie__selected--title--top {
-  margin-left: 10px;
-  margin-bottom: 0;
-}
-
-.movie__summary {
-  margin-bottom: 16px;
-}
-
-.movie__selected--title {
-  margin-bottom: 8px;
-}
-
-.movie__summary--title {
-  margin-bottom: 8px;
-}
-
-.movie__summary--para {
-  margin-bottom: 16px;
-}
 
 
 @media (max-width: 768px) {

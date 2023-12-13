@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-
 import Movies from "./pages/Movies";
 import Home from "./pages/Home";
 import Nav from "./components/Nav";
-import MovieInfo from "./pages/MovieInfo";
+import MovieData from "./pages/MovieData";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/movies" element={<Movies />} />
-          <Route path="/movies/:id" element={<MovieInfo />} />
+          <Route path="/movies/:imbdID" element={<MovieData />} />
         </Routes>
       </div>
     </Router>
