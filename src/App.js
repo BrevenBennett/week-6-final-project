@@ -2,9 +2,7 @@ import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-
 import Movies from "./pages/Movies";
 import Home from "./pages/Home";
 import Nav from "./components/Nav";
-// import MovieInfo from "./pages/MovieInfo";
-// import { useEffect, useState } from "react";
-// import axios from "axios";
+import MovieInfo from "./pages/MovieInfo";
 
 function App() {
   return (
@@ -14,7 +12,7 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/movies" element={<Movies />} />
-          {/* <Route path="/movies/:id" element={<MovieInfo movies={movies} />} /> */}
+          <Route path="/movies/:id" element={<MovieInfo />} />
         </Routes>
       </div>
     </Router>

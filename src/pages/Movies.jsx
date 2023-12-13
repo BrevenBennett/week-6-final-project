@@ -9,37 +9,35 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    async function fetchMovies() {
-      try {
-        setLoading(true);
+  function handleSubmit(event) {
+    event.preventDefault();
+    fetchMovies();
+  }
 
-        const apiKey = "867f9b9b";
-        const apiUrl = `http://www.omdbapi.com/?apikey=${apiKey}&s=${search}`;
+  async function fetchMovies() {
+    try {
+      setLoading(true);
 
-        const { data } = await axios.get(apiUrl);
-        if (data && data.Search) {
-          setMovies(data.Search);
-        }
-      } catch (error) {
-        console.error("Couldn't find what you're looking for:", error);
-      } finally {
-        setLoading(false);
+      const apiKey = "867f9b9b";
+      const apiUrl = `http://www.omdbapi.com/?apikey=${apiKey}&s=${search}`;
+
+      const { data } = await axios.get(apiUrl);
+      if (data && data.Search) {
+        setMovies(data.Search);
+        console.log(data.Search)
       }
+    } catch (error) {
+      console.error("Couldn't find what you're looking for:", error);
+    } finally {
+      setLoading(false);
     }
+  }
 
+  useEffect(() => {
     if (search) {
       fetchMovies();
     }
-  }, [search]);
-
-  function handleChange(e) {
-    setSearch(e.target.value);
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-  }
+  }, []);
 
   function filterMovies(filter) {
     console.log(filter);
@@ -55,13 +53,13 @@ const Movies = () => {
     <>
       <div className="nav__movie--secondary">
         <h1 className="nav__title">Browse Our Movies</h1>
-        <form action="" id="form" value={search} onSubmit={handleSubmit}>
+        <form action="" id="form" onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Find your movie"
             id="search"
             value={search}
-            onChange={handleChange}
+            onChange={(e) => setSearch(e.target.value)}
           />
           <div className="header__btn--wrapper">
             <button className="header__btn" type="submit">
@@ -94,7 +92,7 @@ const Movies = () => {
               <FontAwesomeIcon icon="spinner" />
             </div>
           ) : (
-            movies.map((movie) => <Movie movie={movie} key={movie.imdbID} />)
+            movies.map((movie) => <Movie movie={movie} key={movie.imdbID} />).slice(0, 6)
           )}
         </div>
       </header>

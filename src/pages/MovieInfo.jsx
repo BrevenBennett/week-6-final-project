@@ -1,10 +1,23 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 const MovieInfo = ({ movies }) => {
-    const { title } = useParams();
-    const movie = movies.find((movie) => movie.title === title)
+  // const { id } = useParams();
+  // const [loading, setLoading] = useState(true);
+  // const [movie, setMovie] = useState("");
+
+  // async function fetchMovieInfo() {
+  //   const apiKey = "867f9b9b";
+  //   const { data } = await axios.get(`https://www.omdbapi.com/?i=${id}&apikey=${apiKey}&s=`)
+  //   setMovie(data);
+  //   setLoading(false);
+  // }
+
+  // useEffect(() => {
+  //   fetchMovieInfo();
+  // }, [])
 
   return (
     <div className="movies__container">
@@ -19,23 +32,17 @@ const MovieInfo = ({ movies }) => {
         </div>
         <div className="movie__selected">
           <figure className="movie__selected--figure">
-            <img src={movie.Poster} alt="" className="movie__selected--img" />
+            <img src="{movie.Poster}" alt="" className="movie__selected--img" />
           </figure>
           <div className="movie__selected--description">
-            <h2 className="movie__selected--title">{movie.title}</h2>
+            <h2 className="movie__selected--title">movie.title</h2>
             <div className="movie__summary">
               <h3 className="movie__summary--title">Summary</h3>
               <p className="movie__summary--para">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-                autem maxime dolore quam fuga iste totam veritatis quaerat
-                minima necessitatibus. Vitae earum corrupti nulla harum cum
-                recusandae voluptatibus blanditiis veniam!
+                movie.Plot
               </p>
               <p className="movie__summary--para">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-                autem maxime dolore quam fuga iste totam veritatis quaerat
-                minima necessitatibus. Vitae earum corrupti nulla harum cum
-                recusandae voluptatibus blanditiis veniam!
+                movie.Rated
               </p>
             </div>
           </div>
