@@ -314,7 +314,6 @@ footer {
 .header {
   padding: 24px;
   position: relative;
-  height: calc(100vh + 140px);
   background-color: red;
 }
 
@@ -338,16 +337,15 @@ footer {
 }
 
 .movies__placeholder {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 30%;
-  left: 50%;
   font-size: 40px;
   text-align: center;
+  margin: 240px 0;
+  font-weight: bold;
 }
 
 .movie-list {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   visibility: visible;
   max-width: 1200px;
@@ -387,10 +385,7 @@ footer {
 }
 
 .movie__loading {
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
+  margin: 240px 0;
 }
 
 .fa-spinner {
@@ -409,6 +404,57 @@ footer {
   }
 }
 
+.skeleton__info--wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 96px;
+}
+
+.movie__poster--skeleton {
+  background-color: #e5e5e5;
+  height: 400px;
+  width: 275px;
+  border-radius: 10px;
+  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.2);
+}
+
+.movie__info-skeleton--wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 45%;
+}
+
+.movie__info-title--skeleton {
+  border-radius: 10px;
+  background-color: #e5e5e5;
+  height: 45px;
+  width: 350px;
+  margin-bottom: 32px;
+  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.2);
+}
+
+.movie__info-title--skeleton,
+.movie__poster--skeleton {
+  background: linear-gradient(
+    120deg,
+    #e5e5e5 30%,
+    #f0f0f0 38%,
+    #f0f0f0 40%,
+    #e5e5e5 48%
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  animation: load 2s inifnite;
+}
+
+@keyframes load {
+  100% {
+    background-position: -100% 0;
+  }
+}
+
 /* 
 
   movie/:imdbID
@@ -418,7 +464,7 @@ footer {
 .movies__container {
   padding: 24px 0;
   background-color: red;
-  height: 100vh;
+  height: calc(100vh - 96px);
 }
 
 .movie__clicked--links {
@@ -438,23 +484,22 @@ footer {
   width: 100%;
   margin-top: 72px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .movie__clicked--description {
+  width: 45%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 45%;
 }
 
 .movie__clicked--img {
   border-radius: 10px;
-  margin-bottom: 12px;
 }
 
 .movie__clicked--info {
-  width: 45%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -471,6 +516,8 @@ footer {
   .movie {
     width: 50%;
   }
+
+  
 }
 
 @media (max-width: 600px) {

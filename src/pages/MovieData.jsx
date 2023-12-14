@@ -20,7 +20,7 @@ const MovieData = () => {
     setMovieData(data);
     setTimeout(() => {
       setLoading(false);
-    }, 2000)
+    }, 1000)
   }
 
   useEffect(() => {
@@ -40,17 +40,18 @@ const MovieData = () => {
         </div>
         <div className="movie__clicked">
           {loading ? (
-            // new Array(1).fill(0).map((_, index) => (
-            //   <div className="skeleton__info--wrapper" key={index}>
-            //     <div className="movie__poster--skeleton"></div>
-            //     <div className="movie__info-skeleton--wrapper">
-            //       <div className="movie__info-title--skeleton"></div>
-            //       <div className="movie__info-title--skeleton"></div>
-            //       <div className="movie__info-title--skeleton"></div>
-            //     </div>
-            //   </div>
-            // ))
-            <div>Loading...</div>
+            new Array(1).fill(0).map((_, index) => (
+              <div className="skeleton__info--wrapper" key={index}>
+                <div className="movie__poster--skeleton"></div>
+                <div className="movie__info-skeleton--wrapper">
+                  <div className="movie__info-title--skeleton"></div>
+                  <div className="movie__info-title--skeleton"></div>
+                  <div className="movie__info-title--skeleton"></div>
+                  <div className="movie__info-title--skeleton"></div>
+                  <div className="movie__info-title--skeleton"></div>
+                </div>
+              </div>
+            ))
           ) : (
             <>
               <div className="movie__clicked--description">
@@ -63,22 +64,22 @@ const MovieData = () => {
                 </figure>
               </div>
               <div className="movie__clicked--info">
-                <h1 className="movie__clicked--title">{movieData.Title}</h1>
+                <h1 className="movie__clicked--detail">{movieData.Title}</h1>
                 <div className="movie__clicked--detail">
                   <h2>Initial Release:</h2> 
-                  <h4>{movieData.Released}</h4>
+                  <h3>{movieData.Released}</h3>
                 </div>
                 <div className="movie__clicked--detail">
                   <h2>Director:</h2> 
-                  <h4>{movieData.Director}</h4>
+                  <h3>{movieData.Director}</h3>
                 </div>
                 <div className="movie__clicked--detail">
                   <h2>Box Office:</h2> 
-                  <h4>{movieData.BoxOffice}</h4>
+                  <h3>{movieData.BoxOffice}</h3>
                 </div>
                 <div className="movie__clicked--detail">
                   <h2>Synopsis:</h2>
-                  <h4>{movieData.Plot}</h4>
+                  <h3>{movieData.Plot}</h3>
                 </div>
               </div>
             </>

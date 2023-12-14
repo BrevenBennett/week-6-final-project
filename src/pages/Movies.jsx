@@ -64,7 +64,9 @@ const Movies = () => {
       </div>
       <div className="header">
         <div className="header__movie">
-          <h3 className="header__movie--search">Search Results For: {movies.length > 0 && search}</h3>
+          <h3 className="header__movie--search">
+            Search Results For: {movies.length > 0 && search}
+          </h3>
           <div className="filter__wrapper">
             <h3 className="header__movie--year">Year Range:</h3>
             <select
@@ -82,14 +84,21 @@ const Movies = () => {
         </div>
         <div className="movie-list">
           {movies.length === 0 ? (
-            <h1 className="movies__placeholder">Search now to find your favorite movies!</h1>
-            ) : (loading ? (
+            <div className="movies__placeholder">
+              Search now to find your favorite movies!
+            </div>
+          ) : loading ? (
             <div className="movie__loading">
               <FontAwesomeIcon icon="spinner" />
             </div>
           ) : (
-            movies.map((movie) => <Movie movie={movie} key={movie.imdbID} />).slice(0, 6)
-          ))}
+            // new Array(6).fill(0).map((_, index) => (
+            // <div className="movie__img--wrapper movie__poster--skeleton" key={index}></div>
+            // ))
+            movies
+              .map((movie) => <Movie movie={movie} key={movie.imdbID} />)
+              .slice(0, 6)
+          )}
         </div>
       </div>
     </>
