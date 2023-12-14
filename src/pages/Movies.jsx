@@ -18,7 +18,7 @@ const Movies = () => {
       setLoading(true);
 
       const apiKey = "867f9b9b";
-      const apiUrl = `http://www.omdbapi.com/?apikey=${apiKey}&s=${search}`;
+      const apiUrl = `https://www.omdbapi.com/?apikey=${apiKey}&s=${search}`;
 
       const { data } = await axios.get(apiUrl);
       if (data && data.Search) {
