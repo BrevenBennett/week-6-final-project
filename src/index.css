@@ -417,9 +417,6 @@ footer {
   max-width: 300px;
   border-radius: 10px;
   box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.2);
-}
-
-.movie__poster--skeleton {
   margin: 12px;
 }
 
@@ -460,6 +457,7 @@ footer {
 .movies__container {
   padding: 24px 0;
   background-color: red;
+  height: calc(100vh - 96px)
 }
 
 .movie__clicked--links {
@@ -508,6 +506,10 @@ footer {
 
 
 @media (max-width: 768px) {
+  .movies__container {
+    height: 135vh;
+  }
+
   .movie {
     width: 50%;
   }

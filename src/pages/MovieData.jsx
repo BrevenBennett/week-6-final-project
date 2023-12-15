@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 const MovieData = () => {
-  // use this url to build ui first: https://www.omdbapi.com/?i=tt1905041&apikey=867f9b9b
   const { imdbID } = useParams();
   console.log(imdbID);
   const [movieData, setMovieData] = useState([]);
