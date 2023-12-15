@@ -88,13 +88,15 @@ const Movies = () => {
               Search now to find your favorite movies!
             </div>
           ) : loading ? (
-            <div className="movie__loading">
-              <FontAwesomeIcon icon="spinner" />
-            </div>
+            // <div className="movie__loading">
+            //   <FontAwesomeIcon icon="spinner" />
+            // </div>
+            new Array(6)
+              .fill(0)
+              .map((_, index) => (
+                <div className="movie__poster--skeleton" key={index}></div>
+              ))
           ) : (
-            // new Array(6).fill(0).map((_, index) => (
-            // <div className="movie__img--wrapper movie__poster--skeleton" key={index}></div>
-            // ))
             movies
               .map((movie) => <Movie movie={movie} key={movie.imdbID} />)
               .slice(0, 6)

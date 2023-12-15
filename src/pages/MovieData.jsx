@@ -44,11 +44,11 @@ const MovieData = () => {
               <div className="skeleton__info--wrapper" key={index}>
                 <div className="movie__poster--skeleton"></div>
                 <div className="movie__info-skeleton--wrapper">
+                  <div className="movie__info-title--skeleton movie__info-title--skeleton-long"></div>
                   <div className="movie__info-title--skeleton"></div>
                   <div className="movie__info-title--skeleton"></div>
                   <div className="movie__info-title--skeleton"></div>
-                  <div className="movie__info-title--skeleton"></div>
-                  <div className="movie__info-title--skeleton"></div>
+                  <div className="movie__info-title--skeleton movie__info-title--skeleton-large"></div>
                 </div>
               </div>
             ))
